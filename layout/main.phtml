@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.css">
+
+    <title>Test task for scandiweb</title>
+
+</head>
+<body>
+
+<!-- NAVBAR-->
+<?php
+
+include "tpl/navbar.phtml";
+?>
+<!-- END of NAVBAR -->
+
+
+<!--CARD with selling Items-->
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            <?php
+            for ($i=0; $i<sizeof($records) ; $i++) {
+                ?>
+                <div class="col-md-4 pic">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="https://source.unsplash.com/640x480/?<?= $records[$i]->type ?>,<?= $records[$i]->name ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+
+                            <p class="card-text"><?= $records[$i]->name ?></p>
+                            <p class="card-text"><?= $records[$i]->price ?></p>
+                            <p class="card-text"><?= $records[$i]->sku ?></p>
+                            <div class="custom-control custom-checkbox checkboxes text-right">
+                                <input type="checkbox" class="custom-control-input" id="<?= $records[$i]->id ?>" value="<?= $records[$i]->id ?>">
+                                <label class="custom-control-label" for="<?= $records[$i]->id ?>"></label>
+                            </div>
+                            <!-- For further upgrade, to include view/edit buttons and date of creation -->
+
+                            <!--CODE --
+
+                             <div class="d-flex justify-content-between align-items-center">
+                                      <div class="btn-group">
+                                          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                      </div>
+                                      <small class="text-muted">9 mins</small>
+
+                                  </div>
+
+                                  -- END of CODE-->
+
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>
+<!-- End of Card Products -->
+
+<!-- Vendor scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/vendor/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="/vendor/jquery.min.js"></script>
+<!-- My script -->
+<script src="/js/script.js"></script>
+
+<!-- Footer -->
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019 For Scandi Web Test</p>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="/">Main</a></li>
+        <li class="list-inline-item"><a href="/add/">Add Form</a></li>
+    </ul>
+</footer>
+</body>
+
+</html>

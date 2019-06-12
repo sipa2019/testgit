@@ -1,0 +1,17 @@
+
+<?php foreach ($this->registry['notify']->notify()->getAllMessages() as $stack => $messages): ?>
+    <?php foreach ($messages as $msg): ?>
+        <?php if ($stack == 'error'): ?>
+            <div class="alert alert-error">
+                <button class="close" data-dismiss="alert">&times;</button>
+                <?=$msg ?>
+            </div>
+        <?php elseif ($stack == 'success'): ?>
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">&times;</button>
+                <?=$msg ?>
+            </div>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endforeach ?>
+	

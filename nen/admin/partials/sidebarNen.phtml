@@ -1,0 +1,198 @@
+<?php
+$lang	=	isset($_GET['lang']) && $_GET['lang'] ? $_GET['lang'] :LOCALE;
+$arrayMenu = array(
+
+	/*0 => array(
+		'heading' => $translate->translate('MainPage'),
+		'pages' => array(		
+			'0' => array(
+				'title' => $translate->translate('Info'),
+				'page' => 'mainpage'
+			),
+		),			
+	),*/
+	
+	1 => array(
+		'heading' => $translate->translate('Posts'),
+		'pages' => array(
+			'0' => array(
+				'title' => $translate->translate('Posts All'),
+				'nav'	=> 1,
+				'page' => 'news',
+				'id_parent'	=> 0 //category
+			),
+			'1' => array(
+				'title' => $translate->translate('News Sait'),
+				'nav'	=> 1,
+				'page' => 'news',
+				'id_parent'	=> 1 //category
+			),
+			'2' => array(
+				'title' => $translate->translate('News Industries'),
+				'nav'	=> 1,
+				'page' => 'news',
+				'id_parent'	=> 2 //category
+			),
+			'3' => array(
+				'title' => $translate->translate('Notes'),
+				'nav'	=> 1,
+				'page' => 'news',
+				'id_parent'	=> 3 //category
+			),
+		),		
+	),
+	
+	2 => array(
+		'heading' => $translate->translate('Pages'),
+		'pages' => array(
+			'0' => array(
+				'title' => $translate->translate('Pages'),
+				'nav'	=> 2,
+				'page' => 'Pages',
+				'id_parent'	=> 0
+			),
+			'1' => array(
+				'title' => $translate->translate('Engineer-Advocacy'),
+				'nav'	=> 2,
+				'page' => 'Pages',
+				'id_parent'	=> 5
+			),
+			'2' => array(
+				'title' => $translate->translate('Pyrolysis'),
+				'nav'	=> 2,
+				'page' => 'Pages',
+				'id_parent'	=> 14
+			),
+			'3' => array(
+				'title' => $translate->translate('Ozon'),
+				'nav'	=> 2,
+				'page' => 'Pages',
+				'id_parent'	=> 22
+			),
+			
+			
+		),		
+	),
+	3 => array(
+		'heading' => $translate->translate('Gallery'),
+		'pages' => array(
+			'0' => array(
+				'title' => $translate->translate('Gallery'),
+				'nav'	=> 3,
+				'page' => 'Galleries',
+				'id_parent'	=> 0,
+			),
+		),		
+	),
+	
+	4 => array(
+		'heading' => $translate->translate('Services'),
+		'pages' => array(
+			'0' => array(
+				'title' => $translate->translate('Services'),
+				'nav'	=> 4,
+				'page' => 'services'
+			),
+		),		
+	),
+	5 => array(
+		'heading' => $translate->translate('Projects'),
+		'pages' => array(
+			'0' => array(
+				'title' => $translate->translate('Projects'),
+				'nav'	=> 5,
+				'page' => 'projects',
+				'id_parent'	=> 0
+			),
+		),		
+	),
+	6 => array(
+		'heading' => $translate->translate('Photo'),
+		'pages' => array(
+			'0' => array(
+				'title' => $translate->translate('PhotoProjects'),
+				'nav'	=> 6,
+				'page' => 'photoprojects',
+				'id_parent'	=> 0 //id projecta
+			),
+			
+			'1' => array(
+				'title' => $translate->translate('Комплекс по производству и переработке шампиньонов (Рига. Латвия)'),
+				'nav'	=> 6,
+				'page' => 'photoprojects',
+				'id_parent'	=> 1 //id projecta
+			),		
+			
+			
+			'2' => array(
+				'title' => $translate->translate('Завод по пиролизной переработке утильных шин (Одесса. Украина)'),
+				'nav'	=> 6,
+				'page' => 'photoprojects',
+				'id_parent'	=> 2 //id projecta
+			),	
+			
+			
+			
+			'3' => array(
+				'title' => $translate->translate('Завод по девулканизации крошки утильных шин (Рига, Латвия)'),
+				'nav'	=> 6,
+				'page' => 'photoprojects',
+				'id_parent'	=> 3 //id projecta
+			),	
+			
+		),	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+	)
+	
+);
+ksort($arrayMenu);
+
+//var_dump('index lang='.$lang);
+//var_dump('index  LOCALE='.LOCALE);
+$y=0;
+?>
+<ul class="nav nav-pills nav-stacked">
+	<?php foreach ($arrayMenu as $groupBlock): ?>
+
+            <li class="nav-header"><?php echo $groupBlock['heading'] ?></li>
+			<?php ksort($groupBlock['pages']); ?>
+            <?php foreach ($groupBlock['pages'] as $keys): ?>
+
+					<li class="<?=($y=$keys['nav'])?'active':''?>">
+                    <? $y++; ?>
+                  
+                   
+                    
+						<a href="<?=$this->registry['router']->url_admin($params = array(
+															'controller' 	=> $keys['page'],
+															'action' 		=> 'index',
+															'parent_id'		=> $keys['id_parent'],												
+															'lang' 			=> $lang,
+															
+															
+														))?>">
+							<?=$keys['title']?>
+						</a>
+					</li>
+
+            <?php endforeach ?>
+    <?php endforeach ?>
+</ul>

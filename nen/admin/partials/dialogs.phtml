@@ -1,0 +1,64 @@
+<div id="confirm-modal" class="modal hide fade">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h3><?=$translate->translate('Are you sure?')?></h3>
+    </div>
+	
+    <div class="modal-body">
+        <p><?=$translate->translate('Are you sure you want to do this?')?></p>
+    </div>
+
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" ><?=$translate->translate('No, I am not sure')?></a>
+        <a href="#" class="btn btn-primary"><?=$translate->translate('Yes, I am sure')?></a>
+    </div>
+</div>
+
+<!-- modal tables -->
+<div id="tableModal" class="modal hide fade">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h3></h3>
+    </div>
+    <div class="modal-body">
+        <p></p>
+    </div>
+
+    <div class="modal-footer">
+
+        <a href="#" class="btn clear-history" data-dismiss="modal" ><?php echo "Закрыть" ?></a>
+	
+    </div>    
+</div>
+
+<!-- filter modal tables -->
+<div id="tableModalFilter" class="modal hide fade">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h3></h3>
+    </div>
+    <div class="modal-body">
+        <p></p>
+    </div>
+
+    <div class="modal-footer">
+		<a href="#" class="btn btn-primary products-filter" style="display:none;"><?php echo "Применить" ?></a>
+        <a href="#" class="btn clear-history" data-dismiss="modal" ><?php echo "Закрыть" ?></a>
+	
+    </div>    
+</div>
+
+<div id="confirm-modal-button-reverse" class="modal hide fade">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h3><?php echo "Заголовок" ?></h3>
+    </div>
+    <div class="modal-body">
+        <p><?php echo "Вы уверены, что хотите сделать kkэто?" ?></p>
+    </div>
+
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" data-dismiss="modal" ><?php echo "Да, я уверен" ?></a>
+        <a href="#" class="btn"><?php echo "Нет, не уверен" ?></a>
+    </div>
+</div>

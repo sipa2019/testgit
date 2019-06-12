@@ -1,0 +1,110 @@
+<?php
+include_once(SITE_PATH ."/core/Helper.php");
+$lang=LOCALE;
+
+?>
+<div class="well form-inline" >
+    <div style="float:left;">
+
+        <a class="btn btn-success" href="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => 'news',
+								'assort' => $assort,
+								'parent_id'	=> $_GET['parent_id'],
+								'lang'	=> $lang														
+														))?>"><i class="icon-plus icon-white"></i> <?=$translate->translate('Add photo')?> </a>		
+    </div>
+    
+</div>
+
+<?php if (!isset($records) || !count($records)): ?>
+    <h4><?=$translate->translate('Not records')?></h4>
+<?php else: ?>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+            
+           
+            
+            
+				<th><a href="<?=$this->registry['router']->url_admin( $params = array(
+																		'controller' => $page,
+																		'action' => 'index',
+																		'lang'	=> $lang,
+																		'sort' => 'image',
+																		'by' => $this->registry['helper']->sortdirect('image', $assort['sort'], $assort['by'])
+																	)
+														)?>">
+						<i class="<?=$this->registry['helper']->sortparam ('image', $assort['sort'], $assort['by'])?>"></i> <?=$translate->translate('Image')?>
+					</a>
+				</th>
+                
+				
+                
+				<th><a href="<?=$this->registry['router']->url_admin( $params = array(
+																		'controller' => $page,
+																		'action' => 'index', 
+																		'sort' => 'published_at',
+																		'lang'	=> $lang,
+																		'by' => $this->registry['helper']->sortdirect('published_at', $assort['sort'], $assort['by'])
+																	)
+														)?>">
+						<i class="<?=$this->registry['helper']->sortparam ('published_at', $assort['sort'], $assort['by'])?>"></i>
+						<?=$translate->translate('Published')?>
+					</a>
+				</th>
+                				
+				<th><?=$translate->translate("Active")?></td>					
+												
+				<th width="300"><?=$translate->translate('Actions')?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($records as $record): ?>
+				<tr>
+			
+
+                    <td width="90" style="text-align: center;"><img src="<?=REAL_IMAGE_PATH.$record->image?>" width="70"  class="thumbnail"></td>
+				
+					<td><?= date_frommysql($record->published_at)?></td>										
+					<td style="text-align:center;"><?=sprintf('<i class="icon-%s"></i>', $record->published ? 'ok' : 'remove')?></td>					
+		
+					<td style="text-align:center;">
+			
+
+                        <div class="btn-group">
+                            
+
+						<a class="btn" href="<?=$this->registry['router']->url_admin( $params = array(
+								'controller' => $page,
+								'action' => 'show', 
+								'cid' => $record->id,
+								'current' => $record->published,
+								'parent_id'	=> $_GET['parent_id'],
+								'lang'	=> $lang,
+								'assort' => $assort
+							))?>" title="<?=$translate->translate("Active")?>"><i class="icon-eye-open"></i></a>	
+
+		
+							
+						<a class="btn btn-danger confirm-delete" 
+							message="<?=$translate->translate("Are you sure you want to delete the record?")?>"
+                            href="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => 'delete', 
+								'cid' => $record->id,
+								'parent_id'	=> $_GET['parent_id'],
+								'lang'	=> $lang,
+								'assort' => $assort
+							))?>" title="<?=$translate->translate("Delete")?>"><i class="icon-trash icon-white"></i></a>							
+						</div>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<div class="top_options">
+		<?php require_once 'partials/paginator_admin.phtml';?>		
+	</div>	 	
+<?php endif; ?>
+

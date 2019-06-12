@@ -1,0 +1,246 @@
+<?php 
+$lang=$_GET['lang'];
+if (!isset ($lang))	$lang = "ru";
+	include_once("$lang/config_lang.php");							
+
+?>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+
+<META name="robots" content="index,follow">
+
+
+	<meta name="Robots" content="default,all">
+	<meta name="Robots" content="follow">
+	<meta name="Robots" content="daily">
+	<meta name="Revizit-after" content="1 days">
+	<meta name="Allow-Search" content="yes">
+	<meta name="Audience" content="all">
+    
+    
+    
+    <meta name="description" 	content="<?=$seodescription?>">
+    <meta name="author" 		content="SIA Orieco">
+	<meta name="keywords" 		content="<?=$seokeyword?>" >
+
+
+
+<title><?=$title?></title>
+<link rel="SHORTCUT ICON" href="logo.ico"  type="image/x-icon">
+
+<link href="../admin/view/rc/css/bootstrap.min.css" rel="stylesheet">
+<link href="../admin/view/rc/css/style.css" rel="stylesheet" type="text/css"> 
+<link href="../admin/view/rc/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+<link href="../admin/view/rc/css/animate.css" rel="stylesheet" type="text/css">
+ <link href="../admin/view/rc/css/style-poroso.css" rel="stylesheet" type="text/css">
+ <link href="../admin/view/rc/css/style-customs.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+    <script src="js/../admin/view/rc/respond-1.1.0.min.js"></script>
+    <script src="js/../admin/view/rc/html5shiv.js"></script>
+    <script src="js/../admin/view/rc/html5element.js"></script>
+<![endif]-->
+ <style>
+ 
+ </style>
+</head>
+
+<body>
+
+
+<?php $lang=LOCALE;
+
+//var_dump($records);
+//var_dump($records[2]->id);
+
+?>
+
+<div id="ErrorTop"></div>
+<br /><br />
+
+<form class="form-horizontal async" method="post" accept-charset="utf-8" 
+	action="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => 'edit',
+								'cid' => $records[0]->id,
+								'assort' => $assort,
+								'lang'	=> $lang														
+	))?>" enctype="multipart/form-data">
+	<input type="hidden" name="no-apply" value="">
+    <div class="alert alert-error" style="display:none;"></div>
+	<div class="alert alert-success" style="display:none;"></div>
+	
+<fieldset>
+
+<!--start-->
+	
+  <main class="side-main">
+     <section class="hero-banner mb-30px">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="control">
+            
+              					<img class="img-fluid" src="../admin/view/rc/img/orieco/<?=$records[0]->image?>" alt="<?=$records[0]->title?>">
+              						Изменить картинку2
+							      	<input id="MAX_FILE_SIZE" type="hidden" value="16777216" name="MAX_FILE_SIZE">
+									<input id="image_main" type="file" name="image_main">
+								    <br>
+      
+            </div>
+          </div>
+          <div class="col-lg-5 pt-5">
+            <div class="hero-banner__content">
+              		
+              		<label for="title1" class="control-label"><?=$translate->translate('Название')?></label>
+						<div class="controls">
+							<textarea id="title_main" class="" style="width:100%;height: 100%;" name="title_main" aria-hidden="true"><?=$records[0]->title?></textarea>										
+            			</div>
+					
+					<label for="exept1" class="control-label"><?=$translate->translate('Сниппет')?></label>
+            			<div class="controls">
+							<textarea id="exept_main" class="" style="width:100%;height: 100%;" name="except_main" aria-hidden="true"><?=$records[0]->except?></textarea>										
+            			</div>
+            </div>
+          </div>
+        </div>/
+      </div>
+    </section>
+    
+<!--Aboutus-->
+<section id="aboutUs">
+	<div class="inner_wrapper">
+		  	<div class="container">
+		      <label for="seokeyword" class="control-label"><?=$translate->translate('Название')?></label>
+				<div class="controls">
+					<textarea id="title_aboutUs" class="" style="width:100%;height: 100%;" name="title_aboutUs" aria-hidden="true"><?=$records[1]->title?></textarea>										
+				</div>
+				
+			    <div class="inner_section">
+							<div class="row">
+							      	<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+							      	
+							      	Изменить картинку
+							      	<input id="MAX_FILE_SIZE" type="hidden" value="16777216" name="MAX_FILE_SIZE">
+									<input id="image2" type="file" name="image2">
+								   <br>
+							      	
+							      			<img src="../admin/view/rc/img/<?=$records[1]->image?>" class="img-circle delay-03s animated wow zoomIn" alt="">
+							      	</div>
+							    
+							      	<div class=" col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
+								      	<div class="row" >
+										        	<div class=" delay-01s animated fadeInDown wow animated  col-lg-12 ">
+														
+														
+														<label for="except2" class="control-label"><?=$translate->translate('Сниппет')?></label>
+									            			<div class="controls">
+																<textarea id="except_aboutUs" class=""  style="width:100%;height: 100%;"  name="except_aboutUs" aria-hidden="true"><?=$records[1]->except?></textarea>										
+									            			</div>
+									            			
+	            										<label for="content2" class="control-label"><?=$translate->translate('Описание')?></label>
+									            			<div class="controls">
+																<textarea id="content_aboutUs" class=""  style="width:100%;height: 100%;"  rows="15" name="content_aboutUs" aria-hidden="true"><?=$records[1]->content?></textarea>										
+									            			</div>
+	            			
+													   <br/> 
+	 
+													   
+													</div>
+													<div class="work_bottom"> 
+														<span>
+															<?=$aboutUs[5]?>
+														</span> 
+														<a href="#" class="contact_btn">
+															<?=$main[5]?>
+														</a>
+													 </div> 
+										</div>			       
+								   	</div>
+						      
+						    </div>
+			  	</div> 
+		  	</div>
+	</div>		  
+</section>
+										<?php 
+                                       		include_once('partials/services.php');
+                                        ?>
+ </main>
+										<?php 
+                                       		include_once('partials/portfolio.php');
+                                       		//include_once('partials/contacti-footer.php');
+                                        ?>
+
+<div class="control-group">
+            <label for="is_active" class="control-label"><?=$translate->translate('Active')?></label>
+            <div class="controls">
+				<input id="published" type="checkbox" value="1" name="published" <?=('1'==$records[0]->published) ? 'checked' : 'checked'?>>
+            </div>
+        </div>	
+        
+        
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seotitle" class="control-label"><?=$translate->translate('Meta-title')?></label>
+            <div class="controls">
+				<textarea id="seotitle"  class="w800 h50" cols="80" rows="6" name="seotitle" aria-hidden="true"><?=$records[0]->seotitle?></textarea>
+            </div>
+        </div>	
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seodescription" class="control-label"><?=$translate->translate('Meta-descript')?></label>
+            <div class="controls">
+				<textarea id="seodescription" class="w800 h50" cols="80" rows="6" name="seodescription" aria-hidden="true"><?=$records[0]->seodescription?></textarea>										
+            </div>
+        </div>		
+        
+        
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seokeyword" class="control-label"><?=$translate->translate('Meta-keywords')?></label>
+            <div class="controls">
+				<textarea id="seokeyword" class="w800 h50" cols="80" rows="6" name="seokeyword" aria-hidden="true"><?=$records[0]->seokeyword?></textarea>										
+            </div>
+        </div>	
+<!--end-->
+        <div class="form-actions">
+			<input id="id_main" type="hidden" value="<?=$records[0]->id?>" name="id_main">		
+			<input id="id_aboutUs" type="hidden" value="<?=$records[1]->id?>" name="id_aboutUs">	
+			<input id="level" type="hidden" value="0" name="level">					
+			<input id="locale" type="hidden" value="<?=$lang?>" name="locale">								
+            <button class="btn btn-primary" type="submit"><?=$translate->translate('Save')?></button>
+            
+            
+            
+                            
+            
+            
+            <a class="btn" href="<?=$this->registry['router']->url_admin($params = array(
+						'controller' => $page,
+						'action' => 'index',
+						'assort' => $assort,
+						'lang'	=> $lang															
+				))?>"><?=$translate->translate('Cancel')?></a>
+        </div>
+
+
+    </fieldset>
+
+</form>                                       
+                                        
+                                        
+                                        
+                                        
+<script type="text/javascript" src="../admin/view/rc/js/jquery-1.11.0.min.js"></script>
+
+<script src="../admin/view/rc/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../admin/view/rc/js/jquery-scrolltofixed.js"></script>
+<script type="text/javascript" src="../admin/view/rc/js/jquery.nav.js"></script> 
+<script type="text/javascript" src="js/../admin/view/rc/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/../admin/view/rc/jquery.isotope.js"></script>
+<script type="text/javascript" src="js/../admin/view/rc/wow.js"></script> 
+<script type="text/javascript" src="js/../admin/view/rc/custom.js"></script>
+
+</body>
+</html>

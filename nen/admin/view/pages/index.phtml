@@ -1,0 +1,262 @@
+<?php
+include_once(SITE_PATH ."/core/Helper.php");
+$lang	=	LOCALE;
+$icon	=	array();
+$icon[1][1]='fa-recycle'; //icon
+$icon[1][2]='disabled'; //published
+$icon[1][3]='disabled'; //copy
+$icon[1][4]='disabled'; //delete
+
+$icon[2][1]='fa-leaf';	//icon
+$icon[2][2]='disabled'; //published
+$icon[2][3]='disabled'; //copy
+$icon[2][4]='disabled'; //delete
+
+$icon[3][1]='fa-flask';	//icon
+$icon[3][2]='disabled'; //published
+$icon[3][3]='disabled'; //copy
+$icon[3][4]='disabled'; //delete
+
+$icon[4][1]='fa-exchange';	//icon
+$icon[4][2]='disabled'; //published
+$icon[4][3]='disabled'; //copy
+$icon[4][4]='disabled'; //delete
+
+
+$icon[5][1]='fa-graduation-cap';
+$icon[5][2]='disabled'; //published
+$icon[5][3]='disabled'; //copy
+$icon[5][4]='disabled'; //delete
+
+
+$icon[6][1]='fa-graduation-cap';
+$icon[6][2]='disabled'; //published
+$icon[6][3]='disabled'; //copy
+$icon[6][4]='disabled'; //delete
+
+$icon[7][1]='fa-graduation-cap';
+$icon[7][2]='disabled'; //published
+$icon[7][3]='disabled'; //copy
+$icon[7][4]='disabled'; //delete
+
+$icon[8][1]='fa-graduation-cap';
+$icon[8][2]='disabled'; //published
+$icon[8][3]='disabled'; //copy
+$icon[8][4]='disabled'; //delete
+$icon[9][1]='fa-graduation-cap';
+$icon[9][2]='disabled'; //published
+$icon[9][3]='disabled'; //copy
+$icon[9][4]='disabled'; //delete
+
+$icon[10][1]='fa-graduation-cap';
+$icon[10][2]='disabled'; //published
+$icon[10][3]='disabled'; //copy
+$icon[10][4]='disabled'; //delete
+
+$icon[11][1]='fa-graduation-cap';
+$icon[11][2]='disabled'; //published
+$icon[11][3]='disabled'; //copy
+$icon[11][4]='disabled'; //delete
+
+$icon[15][1]='fa-retweet';
+$icon[15][2]='disabled'; //published
+$icon[15][3]='disabled'; //copy
+$icon[15][4]='disabled'; //delete
+
+
+$icon[16][1]='fa-retweet';
+$icon[16][2]='disabled'; //published
+$icon[16][3]='disabled'; //copy
+$icon[16][4]='disabled'; //delete
+
+$icon[17][1]='fa-retweet';
+$icon[17][2]='disabled'; //published
+$icon[17][3]='disabled'; //copy
+$icon[17][4]='disabled'; //delete
+
+
+$icon[18][1]='fa-retweet';
+$icon[18][2]='disabled'; //published
+$icon[18][3]='disabled'; //copy
+$icon[18][4]='disabled'; //delete
+
+$icon[19][1]='fa-retweet';
+$icon[19][2]='disabled'; //published
+$icon[19][3]='disabled'; //copy
+$icon[19][4]='disabled'; //delete
+
+
+$icon[20][1]='fa-retweet';
+$icon[20][2]='disabled'; //published
+$icon[20][3]='disabled'; //copy
+$icon[20][4]='disabled'; //delete
+
+
+
+
+
+
+
+
+
+
+
+
+$icon[12][1]='fa-users';
+$icon[12][2]='disabled'; //published
+$icon[12][3]='disabled'; //copy
+$icon[12][4]='disabled'; //delete
+
+
+$icon[13][1]='fa-briefcase';
+$icon[13][2]='disabled'; //published
+$icon[13][3]='disabled'; //copy
+$icon[13][4]='disabled'; //delete
+
+$icon[14][1]='fa-filter';
+$icon[14][2]='disabled'; //published
+$icon[14][3]='disabled'; //copy
+$icon[14][4]='disabled'; //delete
+
+$icon[21][1]='fa-retweet';
+$icon[21][2]='disabled'; //published
+$icon[21][3]='disabled'; //copy
+$icon[21][4]='disabled'; //delete
+
+$icon[22][1]='fa-tint';
+$icon[23][1]='fa-tint';
+$icon[24][1]='fa-tint';
+
+$icon[25][1]='fa-tint';
+$icon[26][1]='fa-tint';
+
+
+
+
+
+?>
+<div class="well form-inline" >
+    <div style="float:left;">
+
+        <a class="btn btn-success disabled " href="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => 'news',
+								'assort' => $assort,
+								'lang'	=> $lang														
+														))?>"><i class="icon-plus icon-white"></i> <?=$translate->translate('Add page')?> </a>		
+    </div>
+    
+</div>
+
+<?php if (!isset($records) || !count($records)): ?>
+    <h4><?=$translate->translate('Not records')?></h4>
+<?php else: ?>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+ 				<th>
+				</th>
+                
+				<th>
+						<?=$translate->translate('Title')?>
+				</th>
+                
+				<th>
+						<?=$translate->translate('Published')?>
+				</th>
+                				
+				<th>	
+						<?=$translate->translate("Active")?>
+                </th>					
+												
+				<th width="300">
+						<?=$translate->translate('Actions')?>
+                </th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($records as $record): 
+							$pg	=	$record->page;
+							//var_dump('page'.$pg);
+			
+			?>
+				<tr>
+                    
+						<?php if ( ($record->page < 6) || ($record->page=13) || ($record->page=14)  ||($record->page=21)) { 
+                            
+                            $k	=	$icon[$pg][1];
+                        
+                        ?> 
+                     
+                    			<td>
+                    
+                    				<span class="fa-stack fa-lg">
+                                                  <i class="fa fa-square-o fa-stack-2x"></i>
+                                                  <i class="fa <?= $k?> fa-stack-1x"></i>
+                                     </span>
+                    
+                     			</td>                
+					<?php }else{ ?>
+                    <td><img src="<?=REAL_IMAGE_PATH.$record->image?>" width="70" height="45" class="thumbnail"></td>
+					
+					<?php } 
+					
+							$cld=$icon[$pg][2];
+							
+					?>
+                    
+                    
+                 
+                    <td><?=$record->title?></td>					
+					<td><?= date_frommysql($record->published_at)?></td>										
+					<td style="text-align:center;"><?=sprintf('<i class="icon-%s"></i>', $record->published ? 'ok' : 'remove')?></td>					
+		
+					<td style="text-align:center;">
+			
+
+                        <div class="btn-group">
+                            <a class="btn" href="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => 'edit', 
+								'cid' => $record->id,
+								'assort' => $assort,
+								'lang' => $lang
+							))?>" title="<?=$translate->translate("Edit")?>"><i class="icon-edit"></i></a>
+
+						<a class="btn <?=$cld?>" href="<?=$this->registry['router']->url_admin( $params = array(
+								'controller' => $page,
+								'action' => 'show', 
+								'cid' => $record->id,
+								'current' => $record->published,
+								'lang'	=> $lang,
+								'assort' => $assort
+							))?>" title="<?=$translate->translate("Active")?>"><i class="icon-eye-open"></i></a>	
+
+							<a class="btn <?=$cld?>" href="<?=$this->registry['router']->url_admin( $params = array(
+								'controller' => $page,
+								'action' => 'ccopy', 
+								'cid' => $record->id,
+								'lang'	=> $lang,
+								'assort' => $assort
+							))?>" title="<?=$translate->translate("Copy")?>"><i class="icon-file"></i></a>		
+							
+						<a class="btn btn-danger confirm-delete <?=$cld?>" 
+							message="<?=$translate->translate("Are you sure you want to delete the record?")?>"
+                            href="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => 'delete', 
+								'cid' => $record->id,
+								'lang'	=> $lang,
+								'assort' => $assort
+							))?>" title="<?=$translate->translate("Delete")?>"><i class="icon-trash icon-white"></i></a>							
+						</div>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<div class="top_options">
+		<?php require_once 'partials/paginator_admin.phtml';?>		
+	</div>	 	
+<?php endif; ?>
+

@@ -1,0 +1,163 @@
+<?php 	$lang		=	LOCALE;
+		$parent_id	= ($_GET['parent_id'] && $_GET['parent_id'])?$_GET['parent_id']:"";
+?>
+
+<div id="ErrorTop"></div>
+<br /><br />
+
+<form class="form-horizontal async" method="post" accept-charset="utf-8" 
+	action="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => $action,
+								'assort' => $assort,
+								'parent_id'	=>	$parent_id,
+								'lang'	=> $lang														
+	))?>" enctype="multipart/form-data">
+	
+	<input type="hidden" name="no-apply" value="">
+    <div class="alert alert-error" style="display:none;"></div>
+	<div class="alert alert-success" style="display:none;"></div>
+	
+				<?php 
+                if('' == $parent_id){
+                    $cat[1]='checked';
+                }else{
+                    $cat[1]='';
+                    $cat[2]='';
+                    $cat[3]='';
+                    $cat[$parent_id]='checked';
+                }
+                ?> 
+	<fieldset>
+        
+        
+	    <div class="control-group" style="text-align: center; border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">   
+				<label for="title" class="control-label required">Категория</label>
+                <div class="controls">
+                  <input type="radio" name="category" <?= $cat[1]?> value="1"> Новости Сайта
+                  <input type="radio" name="category" <?= $cat[2]?> value="2">Отраслевые Новости
+                  <input type="radio" name="category" <?= $cat[3]?> value="3">Заметки
+                </div>
+        </div>
+           
+        <div class="control-group">
+            <label for="title" class="control-label required"><?=$translate->translate('Заголовок')?></label>
+            <div class="controls">
+				<input id="title" class="input-xxlarge" type="text" default="" value="<?=$_POST['title']?>" name="title">
+            </div>
+        </div>	
+        
+
+        <div class="control-group">
+            <label for="content" class="control-label"><?=$translate->translate('Content')?></label>
+            <div class="controls">
+				<textarea id="content" class="w800 h400" name="content" aria-hidden="true"><?=$_POST['content']?></textarea>				
+            </div>
+        </div>	
+		
+		<div class="control-group ">
+			
+			<div class="controls">
+				<input id="MAX_FILE_SIZE" type="hidden" value="16777216" name="MAX_FILE_SIZE">
+				<input type="hidden" id="image" type="file" name="image">
+				<input type="hidden" value="<?=$_POST['old_image']?>" name="old_image">		
+				<br>				
+				<?php if (!empty($_POST['image'])){ ?>
+					<img class="product-thumb" alt="" src="photos/<?=$_POST['image']?>">
+					<br>
+				<?php } ?>
+				<br>				
+			</div>
+		</div>	
+       
+		
+        <div class="control-group">
+            <label for="is_active" class="control-label"><?=$translate->translate('Active')?></label>
+            <div class="controls">
+				<input id="published" type="checkbox" value="1" name="published" <?=('1'==$_POST['published']) ? 'checked' : ''?>>
+            </div>
+        </div>	
+        
+        
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seotitle" class="control-label"><?=$translate->translate('Meta-title')?></label>
+            <div class="controls">
+				<input id="seotitle" type="text" default="" value="<?=$_POST['seotitle']?>" name="seotitle" class="input-xlarge" >
+            </div>
+        </div>	
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seodescription" class="control-label"><?=$translate->translate('Meta-descript')?></label>
+            <div class="controls">
+				<textarea id="seodescription" class="w800 h50" cols="80" rows="6" name="seodescription" aria-hidden="true"><?=$_POST['seodescription']?></textarea>										
+            </div>
+        </div>		
+        
+        
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seokeyword" class="control-label"><?=$translate->translate('Meta-keywords')?></label>
+            <div class="controls">
+				<textarea id="seokeyword" class="w800 h50" cols="80" rows="6" name="seokeyword" aria-hidden="true"><?=$_POST['seokeyword']?></textarea>										
+            </div>
+        </div>	
+		
+        <div class="form-actions">
+			<input id="id" type="hidden" value="<?=$_POST['id']?>" name="id">		
+				
+			<input id="level" type="hidden" value="0" name="level">					
+			<input id="locale" type="hidden" value="<?=$lang?>" name="locale">								
+            <button class="btn btn-primary" type="submit"><?=$translate->translate('Save')?></button>
+            <a class="btn" href="<?=$this->registry['router']->url_admin($params = array(
+						'controller' => $page,
+						'action' => 'index',
+						'assort' => $assort,
+						'lang'	=> $lang															
+				))?>"><?=$translate->translate('Cancel')?></a>
+        </div>
+
+
+    </fieldset>
+</form>
+<script type="text/javascript">
+$(document).ready(function() {
+
+		$('#content').tinymce({
+            // Location of TinyMCE script
+            script_url 				:	'/js/tinymce/tiny_mce.js',
+            theme 					:	"advanced",
+ 			plugins 				:	"pagebreak,style,layer,table,save,advhr,advimage,advlink, advlist,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,youtube",
+			skin					:	"o2k7",
+			content_css				:	"../../../assets/css/tinymce.css",
+            // Theme options
+            theme_advanced_buttons1 : 	"justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2 : 	"bold,italic,underline,strikethrough,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,code,forecolor,backcolor",
+            theme_advanced_buttons3 : 	"tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,image,insertimage,youtube",
+            theme_advanced_buttons4 : 	"styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,|,insertdate,inserttime,preview,|,charmap,|,fullscreen",
+            
+            theme_advanced_toolbar_location		:	"top",
+            theme_advanced_toolbar_align		:	"left",
+            theme_advanced_statusbar_location 	:	"bottom",
+            theme_advanced_resizing 			:	true,
+          
+			style_formats:[
+			{title			:	'red p', block: 'p', classes: 'color-red'},
+			{title			:	'Картинка-Resize', selector:  'img', classes: 'img-fluid'},
+			{title			:	'Картинка-Выравнивание Right', selector: 'img', classes: 'leftimg'},
+			{title			:	'Картинка-Выравнивание Left', selector: 'img', classes: 'rightimg'},
+			],
+
+			image_advtab: true,
+            // Drop lists for link/image/media/template dialogs
+            template_external_list_url : "lists/template_list.js",
+            external_link_list_url : "lists/link_list.js",
+            external_image_list_url : "lists/image_list.js",
+            media_external_list_url : "lists/media_list.js",
+
+            // Replace values for the template plugin
+            template_replace_values : {
+                username : "Some User",
+                staffid : "991234"
+            }
+        });
+	
+});
+</script>

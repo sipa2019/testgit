@@ -1,0 +1,140 @@
+.langactive{
+color: #fff;	
+}
+a {
+	color: #bbbdff;
+	text-decoration: none;
+}
+.item_overlay:hover {
+	background: rgba(223, 0, 49, 0.7);
+}
+ 
+.img-circle {
+	border-radius: 15%;
+	/*border: 5px solid #df0031;*/
+}
+ .section-title h2 {
+	color: #222222;
+	font-family: 'Raleway', sans-serif;
+	font-size: 34px;
+	letter-spacing: -1px;
+	margin: 80px;
+	text-align: center;
+	text-transform: uppercase;
+}
+ .button.bg:hover {
+	border-color: #df0031;
+	color: #df0031;
+}
+ .button {
+	display: inline-block;
+	border: 1px solid #fff;
+	text-transform: capitalize;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 10px 24px;
+	border-radius: 5px;
+	background-color: #22195b;
+	color: #fff;
+
+	transition: all .4s ease;
+}
+ .fa-15x{
+    font-size:20em;
+}
+ 
+.navbar-inverse .navbar-nav > li > a {
+	color: #fff;
+} 
+ 
+ .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+	color: #fff;
+	background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+	color: #bbbdff;
+	background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #fff;
+	background-color: transparent;
+}
+
+#feature {
+	background: #f2f2f2;
+	padding-bottom: 40px;
+}
+.feature-wrap i {
+	font-size: 48px;
+	height: 110px;
+	width: 110px;
+	margin: 3px;
+	border-radius: 100%;
+	line-height: 110px;
+	text-align: center;
+	background: #ffffff;
+	color: #c52d2f;
+	border: 3px solid #ffffff;
+	box-shadow: inset 0 0 0 5px #f2f2f2;
+	-webkit-box-shadow: inset 0 0 0 5px #f2f2f2;
+	-webkit-transition: 500ms;
+	-moz-transition: 500ms;
+	-o-transition: 500ms;
+	transition: 500ms;
+	float: left;
+	margin-right: 25px;
+
+}
+
+
+
+
+.feature-wrap h2 {
+	margin-top: 10px;
+}
+
+.footer_wrapper {
+	background: #271b69;
+}
+
+#Portfolio {
+	 padding: 0px;
+}
+a.contact_btn:hover {
+	background: #019599;
+	color: #ccc;
+	border: 5px solid #037073;
+}
+
+a.contact_btn {
+	background: #d4292f;
+	text-transform: uppercase;
+	display: block;
+	width: 176px;
+	height: 49px;
+	text-align: center;
+	line-height: 49px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 3px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+	border:5px solid #d42920;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+}
+
+.scrollup{
+width:40px;
+height:40px;
+opacity:0.3;
+position:fixed;
+bottom:50px;
+right:100px;
+display:none;
+text-indent:-9999px;
+background: url('../img/icon_top.png') no-repeat;
+}

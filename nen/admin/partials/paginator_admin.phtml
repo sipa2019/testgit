@@ -1,0 +1,43 @@
+<?php if (isset($paginator['pageCount']) && $paginator['pageCount']> 1): ?>
+    <div class="pagination">
+		<ul>
+			<?php if (isset($paginator['previous']) && $paginator['previous']): ?>
+				<li><a class="btn" href="<?=$this->registry['router']->url_admin($params = array(
+															'controller' => $page,
+															'action' => 'index', 
+															'list' => ($paginator['previous']>1)?$paginator['previous']:1, 
+															'sort' => $paginator_params['sort'],
+															'by' => $paginator_params['by']
+														))?>"><?=$translate->translate("Prev")?></a></li>
+			<?php else: ?>
+				<li class="active"><a href="javascript:void(0);"><?=$translate->translate("Prev")?></a></li>            
+			<?php endif ?>
+            
+			<?php foreach ($paginator['pagesInRange'] as $number): ?>
+				<?php if ($number != $paginator['pagecurrent']): ?>
+					<li><a href="<?=$this->registry['router']->url_admin( $params = array(
+															'controller' => $page,
+															'action' => 'index', 
+															'list' => ($number>1)?$number:1,
+															'sort' => $paginator_params['sort'],
+															'by' => $paginator_params['by']													
+														))?>"><?=$number?></a></li>
+				<?php else: ?>
+					<li class="active"><a href="javascript:void(0);"><?php echo $number ?></a></li>
+				<?php endif ?>
+			<?php endforeach ?>
+            
+			<?php if (isset($paginator['next']) && $paginator['next']): ?>
+				<li><a class="btn" href="<?=$this->registry['router']->url_admin( $params = array(
+															'controller' => $page,
+															'action' => 'index', 
+															'list' => $paginator['next'], 
+															'sort' => $paginator_params['sort'],
+															'by' => $paginator_params['by']					
+														))?>"><?=$translate->translate("Next")?></a></li>
+			<?php else: ?>
+				<li class="active"><a href="javascript:void(0);"><?=$translate->translate("Next")?></a></li>   
+			<?php endif ?>
+		</ul>
+	</div>
+<?php endif ?>

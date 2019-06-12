@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+    <a class="navbar-brand" href="/">ScandiWeb Test</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <?php
+        if ($_SERVER['REQUEST_URI'] == '/'){
+
+            ?>
+
+                <div class="btn-group dropdown mr-3">
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mass Action
+                    </button>
+                    <div class="dropdown-menu">
+                        <!-- Dropdown menu links -->
+                        <button class="dropdown-item" type="button" id="DelPic">Delete</button>
+                    </div>
+                </div>
+
+        <?php } ?>
+            <a href="/add/" class="btn btn-outline-success my-2 my-sm-0" tabindex="-1" role="button" aria-disabled="true">Add Product</a>
+
+    </div>
+    </div>
+</nav>

@@ -1,0 +1,16 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+AddDefaultCharset UTF-8
+
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^.*$ - [NC,L]
+
+RewriteRule ^.*$ index.php [NC,L]
+
+
+
+
+

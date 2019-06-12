@@ -1,0 +1,102 @@
+<?php $lang=LOCALE;?>
+
+<div id="ErrorTop"></div>
+<br /><br />
+
+<form class="form-horizontal async" method="post" accept-charset="utf-8" 
+	action="<?=$this->registry['router']->url_admin($params = array(
+								'controller' => $page,
+								'action' => $action,
+								'assort' => $assort,
+								'lang'	=> $lang														
+	))?>" enctype="multipart/form-data">
+	<input type="hidden" name="no-apply" value="">
+    <div class="alert alert-error" style="display:none;"></div>
+	<div class="alert alert-success" style="display:none;"></div>
+	
+
+	
+	<fieldset>
+              
+        <div class="control-group">
+            <label for="title" class="control-label required"><?=$translate->translate('Заголовок')?></label>
+            <div class="controls">
+				<input id="title" class="input-xxlarge" type="text" default="" value="<?=$_POST['title']?>" name="title">
+            </div>
+        </div>	
+        
+		
+        <div class="control-group">
+            <label for="description" class="control-label"><?=$translate->translate('Description')?></label>
+            <div class="controls">
+				<textarea id="except" class="w800 h200" name="except" aria-hidden="true"><?=$_POST['except']?></textarea>				
+            </div>
+        </div>	
+
+		
+		<div class="control-group ">
+			<label class="control-label" for="image"><?=$translate->translate('Image')?></label>
+			<div class="controls">
+				<input id="MAX_FILE_SIZE" type="hidden" value="16777216" name="MAX_FILE_SIZE">
+				<input id="image" type="file" name="image">
+				<input type="hidden" value="<?=$_POST['old_image']?>" name="old_image">		
+				<br>				
+				<?php if (!empty($_POST['image'])){ ?>
+					<img class="product-thumb" alt="" src="<?=REAL_IMAGE_PATH.$_POST['image']?>">
+					<br>
+				<?php } ?>
+				<br>				
+			</div>
+		</div>	
+		
+       
+		
+        <div class="control-group">
+            <label for="is_active" class="control-label"><?=$translate->translate('Active')?></label>
+            <div class="controls">
+				<input id="published" type="checkbox" value="1" name="published" <?=('1'==$_POST['published']) ? 'checked' : ''?>>
+            </div>
+        </div>	
+		
+        
+        
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seotitle" class="control-label"><?=$translate->translate('Meta-title')?></label>
+            <div class="controls">
+				<input id="seotitle" type="text" default="" value="<?=$_POST['seotitle']?>" name="seotitle" class="input-xlarge" >
+            </div>
+        </div>	
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seodescription" class="control-label"><?=$translate->translate('Meta-descript')?></label>
+            <div class="controls">
+				<textarea id="seodescription" class="w800 h50" cols="80" rows="6" name="seodescription" aria-hidden="true"><?=$_POST['seodescription']?></textarea>										
+            </div>
+        </div>		
+        
+        
+        <div class="control-group" style="border:1px solid #c0c0c0;padding:10px 0;margin:10px 0; background-color:#F7F7F7; ">
+            <label for="seokeyword" class="control-label"><?=$translate->translate('Meta-keywords')?></label>
+            <div class="controls">
+				<textarea id="seokeyword" class="w800 h50" cols="80" rows="6" name="seokeyword" aria-hidden="true"><?=$_POST['seokeyword']?></textarea>										
+            </div>
+        </div>	
+        	
+
+		
+        <div class="form-actions">
+			<input id="id" type="hidden" value="<?=$_POST['id']?>" name="id">		
+				
+			<input id="level" type="hidden" value="0" name="level">					
+			<input id="locale" type="hidden" value="<?=$lang?>" name="locale">								
+            <button class="btn btn-primary" type="submit"><?=$translate->translate('Save')?></button>
+            <a class="btn" href="<?=$this->registry['router']->url_admin($params = array(
+						'controller' => $page,
+						'action' => 'index',
+						'assort' => $assort,
+						'lang'	=> $lang															
+				))?>"><?=$translate->translate('Cancel')?></a>
+        </div>
+
+
+    </fieldset>
+</form>

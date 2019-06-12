@@ -1,0 +1,70 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap-responsive.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script>
+
+<title>Авторизация</title>
+<!--[if IE]>
+<link type="image/x-icon" href="images/favicon.ico');?>" rel="icon">
+<![endif]-->
+
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style type="text/css">
+    html, body { background-color: #eee;width: 100%;height: 100%;}
+    .container {width: 300px;margin: 0 auto;}
+    .container > .content {
+		background-color: #ccc;display: inline-block;padding: 20px 20px 20px 0px;
+		-webkit-border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
+        border-radius: 10px 10px 10px 10px;
+		-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+        box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    }
+    .login-form {margin-left: 65px;}
+    legend {margin-right: -50px;font-weight: bold;color: #404040;}
+    .wrap-login {position:fixed;top:50%;margin-top:-150px;width:100%;}
+	.error .info-box {color: #b94a48; font-style:italic;}
+</style>
+</head>
+<body>
+	<div class="wrap-login">
+		<div class="container">
+			<div class="content">
+				<div class="row">
+					<div class="login-form">
+						<h2>Login</h2>
+						<form action="" method="post" accept-charset="utf-8" class="form-horizontal async" method="post">
+							<div class="alert alert-error" style="display:none;"></div>						
+							<fieldset>
+								<div class="control-group">
+									<input id="login" type="text" default="" value="<?=isset($_POST['login'])?$_POST['login']:''?>" name="login" placeholder="Login">
+								</div>											
+								<div class="control-group">
+									<input id="password" type="password" default="" value="<?=isset($_POST['password'])?$_POST['password']:''?>" name="password" placeholder="Пароль">
+								</div>
+								<button class="btn primary" type="submit">Войти</button>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>					
+</body>
+</html>
+

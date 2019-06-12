@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<?php
+include "head.phtml";
+?>
+<body>
+<!-- NAVBAR-->
+
+<?php
+include "navbar.phtml";
+?>
+
+<!--CARD with selling Items
+-->
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="btn-group dropleft">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Mass Action
+                </button>
+                <div class="dropdown-menu">
+                    <!-- Dropdown menu links -->
+                    <button class="dropdown-item" type="button">Delete</button>
+
+                </div>
+            </div>
+<div class="row">
+    <?php
+    for ($i=0; $i<sizeof($records) ; $i++) {
+        ?>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                     xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
+                     role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#55595c"/>
+                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                </svg>
+                <div class="card-body">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cardCb<?= $i ?>">
+                        <label class="custom-control-label" for="cardCb<?= $i ?>"></label>
+                    </div>
+                    <p class="card-text"><?= $records[$i]->name ?></p>
+                    <p class="card-text"><?= $records[$i]->price ?></p>
+                    <p class="card-text"><?= $records[$i]->sku ?></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+</div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/vendor/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+
+</body>
+
+</html>

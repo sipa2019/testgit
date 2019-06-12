@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<?php require_once 'partials/head.phtml';	?>
+	</head>
+	<body>
+		<?php require_once 'partials/header.phtml';	?>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="tabbable span2" style="background-color:#f5f5f5; border: 1px solid #CCC;">
+					<?php require_once 'partials/sidebar.phtml';	?>				
+				</div>
+				<div class="span9">
+					<?php if (isset($titleMenu) && $titleMenu): ?>
+						<div class="page-header">
+							<h1><?php echo $titleMenu ?></h1>
+						</div>
+					<?php endif ?>				
+                    <?php require_once 'partials/notifications.phtml'; ?>
+					<?php if (isset($content) && $content): ?>
+						<?php require_once $content; ?>					
+					<?php endif ?>				
+                </div>
+            </div>
+        </div>
+		<?php //require_once 'partials/footer.phtml';	?>	
+		<?php require_once 'partials/dialogs.phtml'; ?>		
+    </body>
+</html>
